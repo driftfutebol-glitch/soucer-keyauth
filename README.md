@@ -1,5 +1,10 @@
 # KeyAuth Source Code -> Please star :star2:
 
+## Projeto Customizado
+
+- Guia de deploy em PT-BR: `README_DEPLOY_PTBR.md`
+- Bridge desktop para o painel C#: `api/desktop/index.php`
+
 > [!WARNING]  
 > AS OF JANUARY 29th, 2024 - THIS REPOSITORY IS NO LONGER BEING UPDATED!
 
