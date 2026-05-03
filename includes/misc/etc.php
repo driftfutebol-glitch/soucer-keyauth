@@ -5,11 +5,60 @@ namespace misc\etc;
 function sanitize($input)
 {
     $input = strip_tags(trim($input));
-    if (empty($input) & !is_numeric($input)) 
+    if (empty($input) && !is_numeric($input)) 
     { // in the event the input can't be sanitized
         return NULL;
     }
     return $input;
+}
+
+function maskSensitiveForLog($input)
+{
+    if (!is_array($input)) {
+        return array();
+    }
+
+    $sensitiveKeys = array(
+        'password',
+        'pass',
+        'confirmpassword',
+        'secret',
+        'token',
+        'key',
+        'sessionid',
+        'enckey',
+        'hwid',
+        'keyauthtwofactor',
+        'scan_code1',
+        'scan_code2',
+        'scan_code3',
+        'scan_code4',
+        'scan_code5',
+        'scan_code6'
+    );
+
+    $masked = $input;
+    array_walk_recursive($masked, function (&$value, $key) use ($sensitiveKeys) {
+        if (in_array(strtolower((string) $key), $sensitiveKeys, true)) {
+            $value = '[REDACTED]';
+        }
+    });
+
+    return $masked;
+}
+
+function normalizeBaseUrl()
+{
+    $https = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off');
+    $scheme = $https ? 'https' : 'http';
+
+    $host = $_SERVER['HTTP_HOST'] ?? $_SERVER['SERVER_NAME'] ?? 'localhost';
+    $host = preg_replace('/[^A-Za-z0-9\.\-:\[\]]/', '', (string) $host);
+    if (empty($host)) {
+        $host = 'localhost';
+    }
+
+    return $scheme . '://' . $host;
 }
 
 function random_string_lower($length = 10, $keyspace = "0123456789abcdefghijklmnopqrstuvwxyz"): string 

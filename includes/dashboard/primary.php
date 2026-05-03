@@ -49,6 +49,16 @@ function expireCheck($username, $expires)
 }
 function wh_log($webhook_url, $msg, $un)
 {
+    if (!filter_var($webhook_url, FILTER_VALIDATE_URL)) {
+        return;
+    }
+
+    $parsed = parse_url($webhook_url);
+    $scheme = strtolower($parsed['scheme'] ?? '');
+    if (!in_array($scheme, ['http', 'https'], true)) {
+        return;
+    }
+
     $json_data = json_encode([
         // Message
         "content" => $msg,
@@ -116,6 +126,10 @@ function success($msg)
 }
 
 function popover($id, $title, $msg){
+    $id = htmlspecialchars((string) $id, ENT_QUOTES, 'UTF-8');
+    $title = htmlspecialchars((string) $title, ENT_QUOTES, 'UTF-8');
+    $msg = htmlspecialchars((string) $msg, ENT_QUOTES, 'UTF-8');
+
     echo '<div data-popover id="' . $id . '" role="tooltip"
             class="absolute z-10 invisible inline-block w-64 text-sm text-gray-500 transition-opacity duration-300 bg-[#09090d] rounded-lg shadow-sm opacity-0">
             <div class="px-3 py-2 bg-[#09090d]/70 rounded-t-lg">

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 require '../includes/misc/autoload.phtml';
 require '../includes/dashboard/autoload.phtml';
 require '../includes/api/shared/autoload.phtml';
@@ -15,7 +15,7 @@ set_exception_handler(function ($exception) {
     error_log("\n--------------------------------------------------------------\n");
     error_log($exception);
     error_log("\nRequest data:");
-    error_log(print_r($_POST, true));
+    error_log(print_r(misc\etc\maskSensitiveForLog($_POST), true));
     error_log("\n--------------------------------------------------------------");
     http_response_code(500);
     \dashboard\primary\error($exception->getMessage());
@@ -105,15 +105,15 @@ set_exception_handler(function ($exception) {
                             <a href="../" class="block py-2 pr-4 pl-3 border-b lg:hover:bg-transparent lg:border-0 lg:p-0 text-gray-400 hover:bg-gray-700 hover:text-white lg:hover:bg-transparent border-gray-700 transition duration-200" aria-current="page">Home</a>
                         </li>
                         <li>
-                            <a href="../#features" class="block py-2 pr-4 pl-3 border-b lg:hover:bg-transparent lg:border-0 lg:p-0 text-gray-400 hover:bg-gray-700 hover:text-white lg:hover:bg-transparent border-gray-700 transition duration-200">Features</a>
+                            <a href="../#recursos" class="block py-2 pr-4 pl-3 border-b lg:hover:bg-transparent lg:border-0 lg:p-0 text-gray-400 hover:bg-gray-700 hover:text-white lg:hover:bg-transparent border-gray-700 transition duration-200">Features</a>
                         </li>
                         <li>
-                            <a href="../#plans" class="block py-2 pr-4 pl-3 border-b lg:hover:bg-transparent lg:border-0 lg:p-0 text-gray-400 hover:bg-gray-700 hover:text-white lg:hover:bg-transparent border-gray-700 transition duration-200">
+                            <a href="../#painel" class="block py-2 pr-4 pl-3 border-b lg:hover:bg-transparent lg:border-0 lg:p-0 text-gray-400 hover:bg-gray-700 hover:text-white lg:hover:bg-transparent border-gray-700 transition duration-200">
                                 Plans
                             </a>
                         </li>
                         <li>
-                            <a href="../#team" class="block py-2 pr-4 pl-3 border-b lg:hover:bg-transparent lg:border-0 lg:p-0 text-gray-400 hover:bg-gray-700 hover:text-white lg:hover:bg-transparent border-gray-700 transition duration-200">
+                            <a href="../#faq" class="block py-2 pr-4 pl-3 border-b lg:hover:bg-transparent lg:border-0 lg:p-0 text-gray-400 hover:bg-gray-700 hover:text-white lg:hover:bg-transparent border-gray-700 transition duration-200">
                                 Our Team
                             </a>
                         </li>
@@ -167,7 +167,7 @@ set_exception_handler(function ($exception) {
                                     <div class="h-1 bg-gray-200" id="pass_strength_three"></div>
                                     <div class="h-1 bg-gray-200" id="pass_strength_four"></div>
                                 </div>
-                                <p>It’s better to have:</p>
+                                <p>Itâ€™s better to have:</p>
                                 <ul>
                                     <li class="flex items-center mb-1">
                                         <svg class="w-3.5 h-3.5 mr-2 text-green-400  " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
@@ -208,7 +208,7 @@ set_exception_handler(function ($exception) {
                                     <div class="flex items-center pl-3">
                                         <input name="tosCB" id="tosCB" type="checkbox" value="" class="w-4 h-4 rounded focus:ring-blue-600 ring-offset-gray-700 focus:ring-offset-gray-700 focus:ring-0 bg-[#09090d] border-[#09090d]">
                                         <label for="tosCB" class="w-full py-3 ml-2 text-sm font-medium text-gray-300">Follow
-                                            <a href="/terms" target="_blank" class="text-blue-600  hover:underline">Terms and
+                                            <a href="../terms" target="_blank" class="text-blue-600  hover:underline">Terms and
                                                 Conditions</a></label>
                                     </div>
                                 </li>
@@ -371,7 +371,7 @@ set_exception_handler(function ($exception) {
             </div>
             <hr class="my-6 border-[#0f0f17] sm:mx-auto lg:my-8">
 
-            <span class="block mb-6 text-sm text-gray-400 lg:mb-0 text-center">© 2020 - 2023 <a href="../" class="hover:underline">KeyAuth LLC</a>. All Rights Reserved.
+            <span class="block mb-6 text-sm text-gray-400 lg:mb-0 text-center">Â© 2020 - 2023 <a href="../" class="hover:underline">KeyAuth LLC</a>. All Rights Reserved.
             </span>
         </div>
     </footer>
@@ -508,3 +508,6 @@ set_exception_handler(function ($exception) {
 </body>
 
 </html>
+
+
+

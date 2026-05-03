@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 include '../../includes/misc/autoload.phtml';
 include '../../includes/api/shared/autoload.phtml';
 include '../../includes/api/1.0/autoload.phtml';
@@ -10,7 +10,7 @@ set_exception_handler(function ($exception) {
     error_log("\n--------------------------------------------------------------\n");
     error_log($exception);
     error_log("\nRequest data:");
-    error_log(print_r($_POST, true));
+    error_log(print_r(misc\etc\maskSensitiveForLog($_POST), true));
     error_log("\n--------------------------------------------------------------");
     http_response_code(500);
     $errorMsg = str_replace($databaseUsername, "REDACTED", $exception->getMessage());
@@ -91,7 +91,7 @@ $minHwid = $row['minHwid'] ?? 20;
 if($ownerid == "hTmfnZOYPe") {
     $response = json_encode(array(
         "success" => false,
-        "message" => "Jao é um golpista, prova aqui https://keyauth.cc/jao/"
+        "message" => "Jao Ã© um golpista, prova aqui https://keyauth.cc/jao/"
     ));
 
     $sig = hash_hmac('sha256', $response, $secret);
@@ -1406,7 +1406,7 @@ switch ($_POST['type'] ?? $_GET['type']) {
 
         $credential = $session["credential"] ?? "N/A";
 
-        $msg = "📜 Log: " . $msg;
+        $msg = "ðŸ“œ Log: " . $msg;
 
         $ip = api\shared\primary\getIp();
 
@@ -1421,7 +1421,7 @@ switch ($_POST['type'] ?? $_GET['type']) {
                     "color" => hexdec("00ffe1"),
 
                     // Additional Fields array
-                    "fields" => [["name" => "🔐 Credential:", "value" => "```" . $credential . "```"], ["name" => "💻 PC Name:", "value" => "```" . $pcuser . "```", "inline" => true], ["name" => "🌎 Client IP:", "value" => "```" . $ip . "```", "inline" => true]]
+                    "fields" => [["name" => "ðŸ” Credential:", "value" => "```" . $credential . "```"], ["name" => "ðŸ’» PC Name:", "value" => "```" . $pcuser . "```", "inline" => true], ["name" => "ðŸŒŽ Client IP:", "value" => "```" . $ip . "```", "inline" => true]]
                 ]
             ]
 
@@ -1945,3 +1945,4 @@ switch ($_POST['type'] ?? $_GET['type']) {
                 "message" => "The value inputted for type paramater was not found"
             )));
     }
+

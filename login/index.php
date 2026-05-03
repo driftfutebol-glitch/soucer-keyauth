@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 require '../includes/misc/autoload.phtml';
 require '../includes/dashboard/autoload.phtml';
 require '../includes/api/shared/autoload.phtml';
@@ -18,7 +18,7 @@ set_exception_handler(function ($exception) {
     error_log("\n--------------------------------------------------------------\n");
     error_log($exception);
     error_log("\nRequest data:");
-    error_log(print_r($_POST, true));
+    error_log(print_r(misc\etc\maskSensitiveForLog($_POST), true));
     error_log("\n--------------------------------------------------------------");
     http_response_code(500);
     \dashboard\primary\error($exception->getMessage());
@@ -106,15 +106,15 @@ $istwofa = $_SESSION["temp_istwofamode"] ? true : false;
                             <a href="../" class="block py-2 pr-4 pl-3 border-b lg:hover:bg-transparent lg:border-0 lg:p-0 text-gray-400 hover:bg-gray-700 hover:text-white lg:hover:bg-transparent border-gray-700 transition duration-200" aria-current="page">Home</a>
                         </li>
                         <li>
-                            <a href="../#features" class="block py-2 pr-4 pl-3 border-b lg:hover:bg-transparent lg:border-0 lg:p-0 text-gray-400 hover:bg-gray-700 hover:text-white lg:hover:bg-transparent border-gray-700 transition duration-200">Features</a>
+                            <a href="../#recursos" class="block py-2 pr-4 pl-3 border-b lg:hover:bg-transparent lg:border-0 lg:p-0 text-gray-400 hover:bg-gray-700 hover:text-white lg:hover:bg-transparent border-gray-700 transition duration-200">Features</a>
                         </li>
                         <li>
-                            <a href="../#plans" class="block py-2 pr-4 pl-3 border-b lg:hover:bg-transparent lg:border-0 lg:p-0 text-gray-400 hover:bg-gray-700 hover:text-white lg:hover:bg-transparent border-gray-700 transition duration-200">
+                            <a href="../#painel" class="block py-2 pr-4 pl-3 border-b lg:hover:bg-transparent lg:border-0 lg:p-0 text-gray-400 hover:bg-gray-700 hover:text-white lg:hover:bg-transparent border-gray-700 transition duration-200">
                                 Plans
                             </a>
                         </li>
                         <li>
-                            <a href="../#team" class="block py-2 pr-4 pl-3 border-b lg:hover:bg-transparent lg:border-0 lg:p-0 text-gray-400 hover:bg-gray-700 hover:text-white lg:hover:bg-transparent border-gray-700 transition duration-200">
+                            <a href="../#faq" class="block py-2 pr-4 pl-3 border-b lg:hover:bg-transparent lg:border-0 lg:p-0 text-gray-400 hover:bg-gray-700 hover:text-white lg:hover:bg-transparent border-gray-700 transition duration-200">
                                 Our Team
                             </a>
                         </li>
@@ -130,7 +130,7 @@ $istwofa = $_SESSION["temp_istwofamode"] ? true : false;
                 <div class="md:max-w-lg md:mx-auto md:pt-36">
                     <h2 class="mb-7 md:mb-12 text-3xl md:text-6xl font-bold font-heading tracking-px-n leading-tight text-center">
                         Welcome back to <span class="text-transparent bg-clip-text bg-gradient-to-r to-blue-600 from-sky-400 inline-block">KeyAuth</span>
-                        👋
+                        ðŸ‘‹
                     </h2>
 
                     <h3 class="mb-9 text-sm md:text-xl font-bold font-heading leading-normal">
@@ -350,7 +350,7 @@ $istwofa = $_SESSION["temp_istwofamode"] ? true : false;
             </div>
             <hr class="my-6 border-[#0f0f17] sm:mx-auto lg:my-8">
 
-            <span class="block mb-6 text-sm text-gray-400 lg:mb-0 text-center">© 2020 - 2023 <a href="../" class="hover:underline">KeyAuth LLC</a>. All Rights Reserved.
+            <span class="block mb-6 text-sm text-gray-400 lg:mb-0 text-center">Â© 2020 - 2023 <a href="../" class="hover:underline">KeyAuth LLC</a>. All Rights Reserved.
             </span>
         </div>
     </footer>
@@ -550,3 +550,5 @@ $istwofa = $_SESSION["temp_istwofamode"] ? true : false;
 </body>
 
 </html>
+
+

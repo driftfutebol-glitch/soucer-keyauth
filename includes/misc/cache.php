@@ -55,7 +55,7 @@ function fetch($redisKey, $sqlQuery, $args = [], $multiRowed, $expiry = null, $t
                 if ($data == "not_found") {
                         return 'not_found';
                 }
-                $data = unserialize($data);
+                $data = unserialize($data, ['allowed_classes' => false]);
         }
         return $data; // return data from either MySQL or Redis
 }
@@ -176,7 +176,11 @@ function update($redisKey, ...$replacements) {
         include_once (($_SERVER['DOCUMENT_ROOT'] == "/usr/share/nginx/html/panel" || $_SERVER['DOCUMENT_ROOT'] == "/usr/share/nginx/html/api") ? "/usr/share/nginx/html" : $_SERVER['DOCUMENT_ROOT']) . '/includes/redis.php'; // create connection with Redis
         $redisKey = strtolower($redisKey); // redis is case-insensitive
         
-        $data = unserialize($redis->get($redisKey));
+        $serialized = $redis->get($redisKey);
+        if (!$serialized) {
+                return false;
+        }
+        $data = unserialize($serialized, ['allowed_classes' => false]);
 
         if(!$data) {
                 return false;

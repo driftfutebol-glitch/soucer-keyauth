@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 include '../includes/misc/autoload.phtml';
 include '../includes/dashboard/autoload.phtml';
 
@@ -18,7 +18,7 @@ set_exception_handler(function ($exception) {
     error_log("\n--------------------------------------------------------------\n");
     error_log($exception);
     error_log("\nRequest data:");
-    error_log(print_r($_POST, true));
+    error_log(print_r(misc\etc\maskSensitiveForLog($_POST), true));
     error_log("\n--------------------------------------------------------------");
     http_response_code(500);
     $errorMsg = str_replace($databaseUsername, "REDACTED", $exception->getMessage());
@@ -153,3 +153,4 @@ if (!$_SESSION['app']) // no app selected yet
 </body>
 
 </html>
+

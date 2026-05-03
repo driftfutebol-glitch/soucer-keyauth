@@ -102,7 +102,7 @@ if (isset($_POST['updatesettings']))
 
     if (isset($_POST['submit_code_disable'])) 
     {
-        $code = misc\etc\sanitize($_POST['scan_code1'] . ($_POST['scan_code2']) . ($_POST['scan_code2']) . ($_POST['scan_code3']) . ($_POST['scan_code4']) . ($_POST['scan_code5']));
+        $code = misc\etc\sanitize($_POST['scan_code1'] . ($_POST['scan_code2']) . ($_POST['scan_code3']) . ($_POST['scan_code4']) . ($_POST['scan_code5']) . ($_POST['scan_code6']));
 
         $query = misc\mysql\query("SELECT `googleAuthCode` from `accounts` WHERE `username` = ?", [$_SESSION['username']]);
 
@@ -269,22 +269,22 @@ if (isset($_POST['updatesettings']))
                             <i class="lni lni-shield mr-2 mt-1"></i>FIDO2 Webauthn (Security Key)
                         </button>
 
-                        <a href="https://<?= $_SERVER['HTTP_HOST'] ?? $_SERVER['SERVER_NAME'] ?>/forgot/"
+                        <a href="../forgot/"
                             target="_blank" type="button"
                             class="inline-flex text-white bg-orange-500 hover:opacity-60 focus:ring-0 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 transition duration-200">
                             <i class="lni lni-reload mr-2 mt-1"></i>Change Password
                         </a>
-                        <a href="https://<?= $_SERVER['HTTP_HOST'] ?? $_SERVER['SERVER_NAME']?>/changeEmail/"
+                        <a href="../changeEmail/"
                             target="_blank" type="button"
                             class="inline-flex text-white bg-orange-500 hover:opacity-60 focus:ring-0 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 transition duration-200">
                             <i class="lni lni-reload mr-2 mt-1"></i>Change Email
                         </a>
-                        <a href="https://<?= $_SERVER['HTTP_HOST'] ?? $_SERVER['SERVER_NAME']?>/changeUsername/"
+                        <a href="../changeUsername/"
                             target="_blank" type="button"
                             class="inline-flex text-white bg-orange-500 hover:opacity-60 focus:ring-0 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 transition duration-200">
                             <i class="lni lni-reload mr-2 mt-1"></i>Change Username
                         </a>
-                        <a href="https://<?= $_SERVER['HTTP_HOST'] ?? $_SERVER['SERVER_NAME']?>/deleteAccount/"
+                        <a href="../deleteAccount/"
                             target="_blank" type="button"
                             class="inline-flex text-white bg-red-700 hover:opacity-60 focus:ring-0 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 transition duration-200">
                             <i class="lni lni-trash-can mr-2 mt-1"></i>Delete Account
